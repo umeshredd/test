@@ -1,0 +1,14 @@
+---
+  - hosts: umesh
+    tasks:
+      - name: ensure apache is installed
+        yum: pkg=httpd state=latest
+
+      - name: ensure apache is running
+        service: name=httpd state=started enabled=yes
+
+      - name: ensure git is installed
+        yum: pkg=git state=latest
+
+      - name: download code from github
+        git: repo=https://github.com/demoglot/html-samples-food.git dest=/var/www/html/
